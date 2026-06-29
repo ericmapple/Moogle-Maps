@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: moogle-maps-postgres
+    environment:
+      POSTGRES_DB: moogle_maps
+      POSTGRES_USER: moogle
+      POSTGRES_PASSWORD: moogle
+    ports:
+      - "5432:5432"
+    volumes:
+      - moogle-postgres-data:/var/lib/postgresql/data
+      - ../db/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moogle -d moogle_maps"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  moogle-postgres-data:

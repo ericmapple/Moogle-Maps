@@ -1,0 +1,14 @@
+{
+  "name": "moogle-maps",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Smart Montreal mobility telemetry and routing dashboard.",
+  "scripts": {
+    "dev:web": "npm --prefix apps/web run dev -- --host 127.0.0.1",
+    "build:web": "npm --prefix apps/web run build",
+    "lint:web": "npm --prefix apps/web run lint"
+  },
+  "workspaces": [
+    "apps/web"
+  ]
+}
